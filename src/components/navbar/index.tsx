@@ -5,7 +5,7 @@ import { FaBookOpen } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const { pathname } = useLocation();
-  const { setIsAuthenticated } = useProps();
+  const { isAuthenticated, setIsAuthenticated } = useProps();
   const navigate = useNavigate();
 
   return (
@@ -33,8 +33,7 @@ const Navbar: React.FC = () => {
                   Dashboard
                 </Link>
                 <div>
-                  {pathname.includes("/login") ||
-                  pathname.includes("/register") ? (
+                  {!isAuthenticated ? (
                     pathname.includes("/login") ? (
                       <button
                         onClick={() => navigate("/register")}
