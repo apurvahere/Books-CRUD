@@ -11,7 +11,9 @@ Currently, two official plugins are available:
 
 ## Getting Started
 
-1. Install dependencies
+1. Ensure you are using Node.js version version 18 or higher.
+
+2. Install dependencies
 
 ```bash
 npm # or npm install
@@ -21,7 +23,7 @@ yarn # or yarn install
 pnpm # or pnpm install
 ```
 
-2. Start development server
+3. Start development server
 
 ```bash
 npm run dev
