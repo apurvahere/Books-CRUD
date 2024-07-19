@@ -20,18 +20,22 @@ const Navbar: React.FC = () => {
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <Link
-                  to="/"
-                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/dashboard"
-                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Dashboard
-                </Link>
+                {isAuthenticated && (
+                  <>
+                    <Link
+                      to="/"
+                      className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/dashboard"
+                      className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Dashboard
+                    </Link>
+                  </>
+                )}
                 <div>
                   {!isAuthenticated ? (
                     pathname.includes("/login") ? (

@@ -18,6 +18,12 @@ const Dashboard = lazy(() =>
   import("../pages").then((module) => module.Dashboard)
 );
 
+const Book = lazy(() => import("../pages").then((module) => module.Book));
+const Pintrest = lazy(() =>
+  import("../pages").then((module) => module.Pinterest)
+);
+const Tic = lazy(() => import("../pages").then((module) => module.Tic));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +64,39 @@ const router = createBrowserRouter([
       <Suspense fallback={<ClipLoader color="blue" />}>
         <Layout>
           <Dashboard />
+        </Layout>
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/p",
+    element: (
+      <Suspense fallback={<ClipLoader color="blue" />}>
+        <Layout>
+          <Pintrest />
+        </Layout>
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/tic",
+    element: (
+      <Suspense fallback={<ClipLoader color="blue" />}>
+        {/* <Layout> */}
+        <Tic />
+        {/* </Layout> */}
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/book/:id",
+    element: (
+      <Suspense fallback={<ClipLoader color="blue" />}>
+        <Layout>
+          <Book />
         </Layout>
       </Suspense>
     ),
