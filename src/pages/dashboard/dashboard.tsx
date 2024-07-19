@@ -10,10 +10,12 @@ import { BookInterface } from "../../libs/types/types";
 import BookForm from "../../components/view/AddEditBook";
 import BookDetails from "../../components/view/BookDetails";
 import useAuthentication from "../../utils/hooks/useAuthentication";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ColumnDef } from "@tanstack/react-table";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const columns: ColumnDef<BookInterface>[] = [
     {
       header: "ID",
@@ -171,6 +173,10 @@ const Dashboard = () => {
     setResetSelectedRows(!resetSelectedRows);
   };
 
+  const handleTableRowClick = (val: BookInterface) => {
+    navigate(`/book/${val.id}`);
+  };
+
   if (!isAuthenticated) return <Navigate to="/login" />;
 
   return (
@@ -211,6 +217,7 @@ const Dashboard = () => {
           handleSelectedRows={setSelectedRows}
           loading={isTimeoutElapsed}
           resetSelection={resetSelectedRows}
+          handleRowClick={handleTableRowClick}
         />
       </div>
       <Modal

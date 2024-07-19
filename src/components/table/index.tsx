@@ -24,6 +24,7 @@ type TableRProps<T extends object> = {
   loading: boolean;
   resetSelection?: boolean;
   dataPerPage?: number;
+  handleRowClick?: (rowData: T) => void;
 };
 
 const Table = <T extends object>({
@@ -33,6 +34,7 @@ const Table = <T extends object>({
   loading,
   resetSelection = false,
   dataPerPage = 10,
+  handleRowClick,
 }: TableRProps<T>) => {
   const [selectedRows, setSelectedRows] = useState<
     { id: string; data: Record<string, object> }[]
@@ -59,8 +61,8 @@ const Table = <T extends object>({
       handleSelectedRows(newSelectedRows as { id: string; data: T }[]);
     }
   };
-  const handleRowClick = (rowData: T) => {
-    console.log(rowData);
+  const handleRowClicks = (rowData: T) => {
+    handleRowClick && handleRowClick(rowData);
   };
 
   const handleSelectAll = () => {
@@ -198,7 +200,7 @@ const Table = <T extends object>({
                     <tr
                       key={row.id}
                       className="h-14 cursor-pointer border hover:bg-neutral-100"
-                      onClick={() => handleRowClick(row.original)}
+                      onClick={() => handleRowClicks(row.original)}
                     >
                       <td className="whitespace-nowrap px-2.5 py-3 text-center text-sm text-neutrals-80">
                         <input

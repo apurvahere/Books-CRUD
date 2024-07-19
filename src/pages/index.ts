@@ -4,3 +4,6 @@ export { Dashboard } from "./dashboard";
 export { Homepage } from "./homepage";
 export { NotFoundPage } from "./notfound";
 export { ErrorPage } from "./errorpage";
+export { Book } from "./book";
+export { Pinterest } from "./pintrest";
+export { Tic } from "./tic";
