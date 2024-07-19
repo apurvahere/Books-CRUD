@@ -84,9 +84,9 @@ const router = createBrowserRouter([
     path: "/tic",
     element: (
       <Suspense fallback={<ClipLoader color="blue" />}>
-        {/* <Layout> */}
-        <Tic />
-        {/* </Layout> */}
+        <Layout>
+          <Tic />
+        </Layout>
       </Suspense>
     ),
     errorElement: <ErrorPage />,
